@@ -88,7 +88,7 @@ After resizing the logical volume, expand the filesystem to match:
 
 ## Part 3: Installing Docker on Debian
 
-This section covers installing Docker on Ubuntu.
+This section covers installing Docker on Debian.
 
 ### Step 1: Remove Older Versions
 
@@ -106,11 +106,11 @@ Add Docker’s GPG key and repository to your system’s Apt sources:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 echo \
-"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
 $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
