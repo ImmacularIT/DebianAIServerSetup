@@ -1,6 +1,6 @@
 # Installing Docker on Debian 13
 
-This guide walks you through installing Docker on Debian and expanding logical volumes via Webmin’s interface.
+This guide walks you through installing the Docker cli base on a Debian headless server.
 
 ---
 
