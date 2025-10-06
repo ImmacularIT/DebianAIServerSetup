@@ -1,6 +1,6 @@
 # Installing Sudo on Debian 13
 
-This guide walks you through installing the Portainer on a Debian headless server.
+This guide walks you through installing the Sudo command on a Debian headless server.
 
 ---
 
@@ -14,7 +14,7 @@ apt clean
 apt autoremove
 ```
 
-Enter the name of the user (username) that will be given Sudo rights:
+Enter the name of the user (username) that will be given the Sudo rights:
 
 ```bash
 usermod -aG sudo (username)
