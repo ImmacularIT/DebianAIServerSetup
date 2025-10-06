@@ -4,9 +4,7 @@ This guide walks you through installing the Portainer on a Debian headless serve
 
 ---
 
-Login as root
-
-### docker volume create portainer_data
+Login as root and enter following:
 
 ```bash
 apt update
@@ -16,7 +14,7 @@ apt clean
 apt autoremove
 ```
 
-Enter the name of the user (username) that will be using Sudo rights:
+Enter the name of the user (username) that will be given Sudo rights:
 
 ```bash
 usermod -aG sudo (username)
