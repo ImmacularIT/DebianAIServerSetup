@@ -17,6 +17,10 @@ docker run -d -p 8000:8000 -p 9443:9443 \
   portainer/portainer-ce:latest
 ```
 
-### Access Portainer on:
+### Access Portainer
 
-`https://<your-server-ip>:9443`
+Once installed, Portainer runs on port 9443. You can access it by opening a browser and navigating to:
+
+```
+https://<your-server-ip>:9443
+```
