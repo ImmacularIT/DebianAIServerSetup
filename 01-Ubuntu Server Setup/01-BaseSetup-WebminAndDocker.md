@@ -1,10 +1,10 @@
-# Installing Webmin and Docker on Ubuntu
+# Installing Webmin and Docker on Debian 13
 
 This guide walks you through installing Webmin on Ubuntu and expanding logical volumes via Webmin’s interface. Additionally, it covers Docker installation on Ubuntu.
 
 ---
 
-## Part 1: Installing Webmin on Ubuntu
+## Part 1: Installing Webmin on Debian 13
 
 Webmin is a web-based interface for managing Unix-like systems, making tasks such as user management, server configuration, and software installation easier.
 
