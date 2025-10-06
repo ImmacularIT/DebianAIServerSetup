@@ -1,6 +1,6 @@
 # Installing Webmin and Docker on Debian 13
 
-This guide walks you through installing Webmin on Ubuntu and expanding logical volumes via Webmin’s interface. Additionally, it covers Docker installation on Ubuntu.
+This guide walks you through installing Webmin on Debian and expanding logical volumes via Webmin’s interface. Additionally, it covers Docker installation on Debian.
 
 ---
 
