@@ -4,9 +4,9 @@ This guide walks you through installing Webmin on Debian and expanding logical v
 
 ---
 
-## Part 1: Installing Webmin on Debian 13
+## Part 1: Installing Webmin on Debian 13 (optional)
 
-Webmin is a web-based interface for managing Unix-like systems, making tasks such as user management, server configuration, and software installation easier.
+Webmin is a web-based interface for managing Unix-like systems, making tasks such as user management, server configuration, and software installation easier. Skip this step if manually CLI handling is preferred.
 
 ### Step 1: Update Your System
 
