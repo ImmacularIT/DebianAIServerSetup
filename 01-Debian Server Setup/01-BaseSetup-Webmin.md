@@ -16,7 +16,15 @@ Before installing Webmin, update your system to ensure all packages are up to da
 sudo apt update && sudo apt upgrade -y
 ```
 
-### Step 2: Add the Webmin Repository and Key
+### Step 2: Install parted
+
+Install "parted" in order to handle the disks.
+
+```bash
+sudo apt install parted -y
+```
+
+### Step 3: Add the Webmin Repository and Key
 
 To add the Webmin repository, download and run the setup script.
 
@@ -25,7 +33,7 @@ curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/se
 sudo sh setup-repos.sh
 ```
 
-### Step 3: Install Webmin
+### Step 4: Install Webmin
 
 With the repository set up, install Webmin:
 
@@ -33,13 +41,15 @@ With the repository set up, install Webmin:
 sudo apt-get install webmin --install-recommends
 ```
 
-### Step 4: Access Webmin
+### Step 5: Access Webmin
 
 Once installed, Webmin runs on port 10000. You can access it by opening a browser and navigating to:
 
 ```
 https://<your-server-ip>:10000
 ```
+
+Then login as root.
 
 If you are using a firewall, allow traffic on port 10000:
 
