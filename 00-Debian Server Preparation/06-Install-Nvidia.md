@@ -153,7 +153,7 @@ systemctl start nvidia-power-limit.service
 Check the power limits using nvidia-smi:
 
 ```bash
-# nvidia-smi -q -d POWER
+nvidia-smi -q -d POWER
 ```
 
 Look for the "Power Management" section to verify the new power limits.
