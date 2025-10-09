@@ -227,6 +227,7 @@ chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
 Then delete the source directory (and library file):
 
 ```bash
+cd ..
 rm -R cudnn-linux-x86_64-8.9.7.29_cuda12-archive
 rm cudnn-linux-x86_64-8.9.7.29_cuda12-archive.tar.xz
 ```
