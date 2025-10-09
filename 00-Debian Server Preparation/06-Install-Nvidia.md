@@ -232,6 +232,7 @@ rm -R cudnn-linux-x86_64-8.9.7.29_cuda12-archive
 rm cudnn-linux-x86_64-8.9.7.29_cuda12-archive.tar.xz
 ```
 
+(skip below)
 Set Up Environment Variables.
 This has to done for each and every user that will use the cuDNN libraries.
 
