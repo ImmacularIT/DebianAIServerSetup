@@ -14,16 +14,16 @@ nano /etc/apt/sources.list
 Add "contrib and non-free non-free-firmware" to the lines below. Should look like this:
 
 ```bash
-deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
 
-deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
-deb-src http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
 
-# bookworm-updates, to get updates before a point release is made;
+# trixie-updates, to get updates before a point release is made;
 # see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
-deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
 ```
 
 ## Part 2: Refresh and update
