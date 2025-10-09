@@ -202,7 +202,7 @@ This should display details on the CUDA compile driver, including the installed 
 ### Step 9: Setting Up cuDNN with CUDA (optional)
 
 Visit the NVIDIA cuDNN Archive with a browser.
-Since this need an free account, the only option to download via a broeser and then transfer the file to the server via FileZilla or something.
+Since this need an free account, the only option to download via a browser and then transfer the file to the server via FileZilla or something.
 
 Navigate to the NVIDIA cuDNN Archive:
 https://developer.nvidia.com/rdp/cudnn-archive
