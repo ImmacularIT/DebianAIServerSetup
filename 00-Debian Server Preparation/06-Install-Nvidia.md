@@ -41,11 +41,36 @@ options nouveau modeset=0
 ### Step 3: Install utilities
 
 ```bash
-apt install linux-headers-$(uname -r) build-essential software-properties-common make nvtop htop gcc cmake -y
+apt install linux-headers-$(uname -r) build-essential make nvtop htop gcc cmake -y
 apt clean
 ```
 
-### Step 4: Update the initramfs and reboot
+### Step 4: Install latest Nvidia drivers
+
+Get the latest Nvidia driver at:
+
+```bash
+https://www.nvidia.com/en-us/drivers/unix/
+```
+
+Click and surf to the download page.
+At the time of writing, I selected:
+
+```bash
+Linux x86_64/AMD64/EM64T
+Latest Production Branch Version: 580.95.05
+```
+
+Left click and copy the download url at the download page.
+Then, in the Debian CLI, ennter the following:
+
+```bash
+wget https://us.download.nvidia.com/XFree86/Linux-x86_64/580.95.05/NVIDIA-Linux-x86_64-580.95.05.run
+chmod +x NV*
+./NV* --dkms
+```
+
+### Step 5: Update the initramfs and reboot
 
 ```bash
 update-initramfs -u
