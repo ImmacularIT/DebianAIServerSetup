@@ -82,6 +82,178 @@ update-initramfs -u
 reboot
 ```
 
+### Step 6: Check if the Nvidia card is active
 
-apt install linux-headers-$(uname -r) build-essential software-properties-common make nvtop htop gcc cmake -y
+Check if the Kernel is using Nvidia:
 
+```bash
+lspci -s 13:00.0 -v | grep Kernel
+```
+
+Should get something like this if everything is correct:
+
+```bash
+Kernel driver in use: nvidia
+Kernel modules: nouveau, nvidia_drm, nvidia
+```
+
+If the "Kernel driver in use:" is displaying other than "nvidia", the driver isn't correctly installed.
+
+Display the GPU status with "nvtop":
+
+```bash
+nvtop
+```
+
+### Step 7: Install GPU Power Limit (optional)
+
+This example set maximum to 170W.
+Open a terminal and create a new systemd service file:
+
+```bash
+nano /etc/systemd/system/nvidia-power-limit.service
+```
+
+Add the text (uncomment if more GPUs are used):
+
+```bash
+[Unit]
+Description=Set NVIDIA GPU Power Limit
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nvidia-smi -i 0 -pl 170
+#ExecStart=/usr/bin/nvidia-smi -i 1 -pl 170
+#ExecStart=/usr/bin/nvidia-smi -i 2 -pl 170
+#ExecStart=/usr/bin/nvidia-smi -i 3 -pl 170
+
+[Install]
+WantedBy=multi-user.target
+```
+(save/exit)
+
+Reload the systemd manager configuration:
+
+```bash
+systemctl daemon-reload
+```
+
+Enable the service to ensure it runs at startup:
+
+```bash
+systemctl enable nvidia-power-limit.service
+```
+
+(Optional) Start the Service Immediately:
+
+```bash
+systemctl start nvidia-power-limit.service
+```
+
+Check the power limits using nvidia-smi:
+
+```bash
+# nvidia-smi -q -d POWER
+```
+
+Look for the "Power Management" section to verify the new power limits.
+
+### Step 8: Add the CUDA Repository
+
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/cuda-keyring_1.1-1_all.deb
+dpkg -i cuda-keyring_1.1-1_all.deb
+apt update
+apt -y install cuda
+apt clean
+```
+
+Configure Environment Variables
+Create the Cuda environment file:
+
+```bash
+# nano /etc/profile.d/cuda.sh
+```
+
+And put the following content inside:
+
+```bash
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+```
+(save/exit)
+
+Make the file executable:
+
+```bash
+chmod +x /etc/profile.d/cuda.sh
+source /etc/profile.d/cuda.sh
+```
+
+Verify Installation:
+
+```bash
+nvcc --version
+nvidia-smi
+```
+
+This should display details on the CUDA compile driver, including the installed version.
+
+### Step 9: Setting Up cuDNN with CUDA (optional)
+
+Visit the NVIDIA cuDNN Archive with a browser.
+Since this need an free account, the only option to download via a broeser and then transfer the file to the server via FileZilla or something.
+
+Navigate to the NVIDIA cuDNN Archive:
+https://developer.nvidia.com/rdp/cudnn-archive
+
+Select "Local Installer for Linux x86_64 (Tar)". Then you have Register/Login, which is free.
+(https://developer.nvidia.com/downloads/compute/cudnn/secure/8.9.7/local_installers/12.x/cudnn-linux-x86_64-8.9.7.29_cuda12-archive.tar.xz)
+
+Then transfer the downloaded file to the server.
+
+```bash
+tar -xvf cudnn-linux-x86_64-8.9.7.29_cuda12-archive.tar.xz
+cd cudnn-linux-x86_64-8.9.7.29_cuda12-archive
+```
+Then copy some library files to the Cuda directory.
+
+```bash
+cp include/cudnn*.h /usr/local/cuda/include/
+cp lib/libcudnn* /usr/local/cuda/lib64/
+chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+```
+
+Then delete the source directory (and library file):
+
+```bash
+rm -R cudnn-linux-x86_64-8.9.7.29_cuda12-archive
+rm cudnn-linux-x86_64-8.9.7.29_cuda12-archive.tar.xz
+```
+
+Set Up Environment Variables.
+This has to done for each and every user that will use the cuDNN libraries.
+
+```bash
+nano ~/.bashrc
+```
+
+And put the following content inside:
+
+```bash
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+```bash
+(save/exit)
+
+```bash
+source ~/.bashrc
+```
+
+Repeat the file and source for each user by logging in to their accounts and perform the same:
+
+```bash
+login (user)
+```bash
+
+Then go back to the root login.
