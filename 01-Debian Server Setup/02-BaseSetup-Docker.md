@@ -8,6 +8,45 @@ This guide walks you through installing the Docker cli base on a Debian headless
 
 This section covers installing Docker on Debian.
 
+### Step 1: Add Docker storage disk
+
+It it recommended to add an extra storage disk over the Docker library since it is easy to run out space. If the disk space on the OS disk runs out, the OS will behave strange and finally halt with no chance to start again.
+So let's propare the extra storage.
+
+Prerequisites:
+
+```bash
+1 extra disk with 1 partition, /dev/sdb1, formatted with EXT4 (or other).
+```
+
+Since Docker isn't installed yet, we need to create the Docker directory:
+
+```bash
+sudo mkdir /var/lib/docker
+```
+
+Get the BLKID of the /dev/sdb1:
+
+```bash
+sudo blkid /dev/sdb1
+```
+
+Example of output:
+
+```bash
+/dev/sdb1: UUID="b85e7463-ba57-444e-992f-c94cd7a09f9d" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="4db7408d-01"
+```
+
+
+
+```bash
+# /dev/sdb1 to be mounted on /var/lib/docker
+UUID=4dc584bf-7e36-46d3-b4b8-94ca1b7b21a3 /var/lib/docker                ext4    defaults 0       2
+```
+
+
+
+
 ### Step 1: Remove Older Versions
 
 If you have previous versions of Docker installed, remove them:
