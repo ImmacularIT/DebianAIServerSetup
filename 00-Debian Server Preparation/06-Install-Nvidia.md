@@ -244,7 +244,7 @@ And put the following content inside:
 ```bash
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-```bash
+```
 (save/exit)
 
 ```bash
@@ -255,6 +255,6 @@ Repeat the file and source for each user by logging in to their accounts and per
 
 ```bash
 login (user)
-```bash
+```
 
 Then go back to the root login.
