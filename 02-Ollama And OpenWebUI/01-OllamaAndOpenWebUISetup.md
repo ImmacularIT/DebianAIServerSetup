@@ -86,3 +86,12 @@ To install and run OpenWebUI, use the following command:
 ```bash
 docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 ```
+
+### Access OpenWebUI
+
+Once installed, OpenWebUI runs on port 3000. You can access it by opening a browser and navigating to:
+
+```
+http://<your-server-ip>:3000
+```
+Note: Use "http", not "https".
