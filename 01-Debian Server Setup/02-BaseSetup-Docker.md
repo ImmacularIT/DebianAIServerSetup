@@ -113,13 +113,7 @@ sudo apt-get update
 
 ### Step 3: Install Docker
 
-Login as root.
-
-```bash
-su root
-```
-
-Now, install Docker:
+Install Docker:
 
 ```bash
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
