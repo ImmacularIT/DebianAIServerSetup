@@ -64,6 +64,17 @@ sudo mount -a
 ```
 
 If everything is correct, there will be no error or warnings.
+Check if it is mounted correctly:
+
+```bash
+sudo mount | grep docker
+```
+
+The output should be:
+
+```bash
+/dev/sdb1 on /var/lib/docker type ext4 (rw,relatime,errors=remount-ro)
+```
 
 ### Step 2: Remove Older Versions
 
