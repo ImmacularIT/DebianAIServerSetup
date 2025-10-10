@@ -37,17 +37,35 @@ Example of output:
 /dev/sdb1: UUID="b85e7463-ba57-444e-992f-c94cd7a09f9d" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="4db7408d-01"
 ```
 
+Now, the FSTAB needs to be updated with the Mount point:
 
+```bash
+sudo nano /etc/fstab
+```
+
+At the end of the file, add the partion's UUID and the mount point as:
 
 ```bash
 # /dev/sdb1 to be mounted on /var/lib/docker
-UUID=4dc584bf-7e36-46d3-b4b8-94ca1b7b21a3 /var/lib/docker                ext4    defaults 0       2
+UUID=b85e7463-ba57-444e-992f-c94cd7a09f9d /var/lib/docker                ext4    defaults 0       2
+```
+(save & exit)
+
+Reload the Daemons:
+
+```bash
+sudo systemctl daemon-reload
 ```
 
+Then mount all filesystems:
 
+```bash
+sudo mount -a
+```
 
+If everything is correct, there will be no error or warnings.
 
-### Step 1: Remove Older Versions
+### Step 2: Remove Older Versions
 
 If you have previous versions of Docker installed, remove them:
 
@@ -55,7 +73,7 @@ If you have previous versions of Docker installed, remove them:
 sudo apt remove docker docker-engine docker.io containerd runc
 ```
 
-### Step 2: Add Docker's Official GPG Key and Repository
+### Step 3: Add Docker's Official GPG Key and Repository
 
 Add Docker’s GPG key and repository to your system’s Apt sources:
 
