@@ -26,21 +26,6 @@ To run Ollama using an Nvidia GPU, follow these steps:
     sudo apt-get install -y nvidia-container-toolkit
     ```
 
-#### Install with Yum or Dnf
-
-1. **Configure the repository**:
-
-    ```bash
-    curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
-        | sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
-    ```
-
-2. **Install the NVIDIA Container Toolkit packages**:
-
-    ```bash
-    sudo yum install -y nvidia-container-toolkit
-    ```
-
 ### Step 2: Configure Docker to Use Nvidia Driver
 
 ```bash
