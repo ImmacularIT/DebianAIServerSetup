@@ -76,7 +76,7 @@ The output should be:
 /dev/sdb1 on /var/lib/docker type ext4 (rw,relatime,errors=remount-ro)
 ```
 
-### Step 2: Remove Older Versions
+### Step 2: Remove Older Docker versions
 
 If you have previous versions of Docker installed, remove them:
 
