@@ -86,7 +86,7 @@ sudo apt remove docker docker-engine docker.io containerd runc
 
 ### Step 3: Add Docker's Official GPG Key and Repository
 
-Add Docker’s GPG key and repository to your system’s Apt sources:
+Add Docker’s GPG:
 
 ```bash
 sudo apt-get update
@@ -95,17 +95,29 @@ sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 ```
+
+Add Docker’s repository to your system’s Apt sources:
+
 ```bash
-echo \
+sudo echo \
 "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
 $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
+
+Then update:
+
 ```bash
 sudo apt-get update
 ```
 
 ### Step 3: Install Docker
+
+Login as root.
+
+```bash
+su root
+```
 
 Now, install Docker:
 
