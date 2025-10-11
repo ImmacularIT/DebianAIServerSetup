@@ -83,6 +83,12 @@ docker exec -it ollama ollama run deepseek-v2
 
 Explore more models available in the [Ollama library](https://github.com/ollama/ollama).
 
+### Remove a Model
+
+```bash
+docker exec -it ollama ollama rm [name]
+```
+
 ## OpenWebUI Installation
 
 To install and run OpenWebUI, use the following command:
