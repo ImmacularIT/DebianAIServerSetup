@@ -43,9 +43,27 @@ sudo systemctl restart docker
 docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --restart always --name ollama ollama/ollama
 ```
 
+Ollama will get into sleep mode after a short while and it will take a short amount of time to wake it up again. This will have the effect that it takes a while for the Ollama to respond again. To make Ollama not go into sleep during next 5 hours (for example), use this command line when starting it up:
+
+```bash
+docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 -e OLLAMA_KEEP_ALIVE=5h --restart always --name ollama ollama/ollama
+```
+
+To have it permanently alive (GPU memory never unloaded):
+
+```bash
+docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 -e OLLAMA_KEEP_ALIVE=-1 --restart always --name ollama ollama/ollama
+```
+
+Check the current setting:
+
+```bash
+docker exec ollama printenv OLLAMA_KEEP_ALIVE
+```
+
 ## Running Multiple Instances with Specific GPUs
 
-You can run multiple instances of the Ollama server and assign specific GPUs to each instance. In my server, I have 4 Nvidia 3090 GPUs, which I use as described below:
+You can run multiple instances of the Ollama server and assign specific GPUs to each instance. For example, using 4 Nvidia 3090 GPUs follow the below:
 
 ### Ollama Server for GPUs 0 and 1
 
