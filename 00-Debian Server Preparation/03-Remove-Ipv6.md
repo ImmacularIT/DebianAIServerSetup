@@ -24,6 +24,12 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet ipv6.disable=1"
 GRUB_CMDLINE_LINUX="ipv6.disable=1"
 ```
 
+Update Grub:
+
+```bash
+update-grub
+```
+
 Then Reboot
 
 ```bash
