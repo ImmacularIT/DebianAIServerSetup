@@ -61,7 +61,7 @@ To use GGUF models or other safetensor models, follow the steps below to downloa
 
 1. **Navigate to the Checkpoints Directory**:
    ```bash
-   cd /home/mukul/dev-ai/vison/models/checkpoints
+   cd $HOME/dev-ai/vison/models/checkpoints
    ```
 
 2. **Download `flux1-schnell-fp8.safetensors`**:
