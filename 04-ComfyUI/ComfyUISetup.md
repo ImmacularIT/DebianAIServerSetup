@@ -139,10 +139,15 @@ To use GGUF models or other safetensor models, follow the steps below to downloa
 
 2. **Download `flux1-schnell-fp8.safetensors`**:
    ```bash
+   wget "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors?download=true" -O v1-5-pruned-emaonly-fp16.safetensors
+   ```
+
+3. **Download `flux1-schnell-fp8.safetensors`**:
+   ```bash
    wget "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors?download=true" -O flux1-schnell-fp8.safetensors
    ```
 
-3. **Download `flux1-dev-fp8.safetensors`**:
+4. **Download `flux1-dev-fp8.safetensors`**:
    ```bash
    wget "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors?download=true" -O flux1-dev-fp8.safetensors
    ```
