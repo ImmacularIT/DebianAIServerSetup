@@ -46,7 +46,7 @@ Once the image is built, you can run the Docker container with volume mapping fo
 
 ```bash
 docker run --name comfyui -p 8188:8188 --gpus all \
-  -v /home/mukul/dev-ai/vison/models:/app/models \
+  -v $HOME/dev-ai/vison/models:/app/models \
   -d comfyui-gguf:latest
 ```
 
