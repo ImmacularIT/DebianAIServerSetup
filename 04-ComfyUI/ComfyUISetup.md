@@ -57,6 +57,16 @@ This command maps your local `models` directory to `/app/models` inside the cont
 Download and place your civitai checkpoint models in the `checkpoints` directory inside the container:
 https://civitai.com/models/139562/realvisxl-v50
 
+1. **Navigate to the Checkpoints Directory**:
+   ```bash
+   cd $HOME/dev-ai/vison/models/checkpoints
+   ```
+
+2. **Download `realvisxlV50_v50LightningBakedvae.safetensors`**:
+   ```bash
+   wget "https://civitai.com/api/download/models/798204?type=Model&format=SafeTensor&size=full&fp=fp16" -O realvisxlV50_v50LightningBakedvae.safetensors
+   ```
+
 To use GGUF models or other safetensor models, follow the steps below to download them directly into the `checkpoints` directory.
 
 1. **Navigate to the Checkpoints Directory**:
