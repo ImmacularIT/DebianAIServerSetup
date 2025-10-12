@@ -59,21 +59,23 @@ drwx--x--- 13 root docker 4096 Oct 12 07:37 /var/lib/docker
 drwxrws---  2 root docker 4096 Oct 12 11:04 /var/lib/docker/exstore
 ```
 
+Create the following directory structure:
+
+```bash
+mkdir -p $HOME/shared/source
+mkdir -p $HOME/shared/application/comfyui/models/checkpoints
+mkdir -p $HOME/shared/application/comfyui/output
+mkdir -p $HOME/shared/application/comfyui/workflow
+```
+
 ## Create ComfyUI
 
 ### 1. Clone the ComfyUI Repository
 
-Create the following folder structure:
+First, navigate to source directory:
 
 ```bash
-mkdir -p $HOME/shared/vison/models/checkpoints
-mkdir -p $HOME/shared/vison/output
-```
-
-First, navigate to `$HOME/shared/vison` directory:
-
-```bash
-cd $HOME/shared/vison
+cd $HOME/shared/source
 ```
 
  Clone the ComfyUI repository to your local machine
@@ -108,8 +110,9 @@ Once the image is built, you can run the Docker container with volume mapping fo
 
 ```bash
 docker run --name comfyui -p 8188:8188 --gpus all \
-  -v $HOME/shared/vison/models:/app/models \
-  -v $HOME/shared/vison/output:/app/output \
+  -v $HOME/shared/application/comfyui/models:/app/models \
+  -v $HOME/shared/application/comfyui/output:/app/output \
+  -v $HOME/shared/application/comfyui/workflow:/app/user \
   -d comfyui-gguf:latest
 ```
 
@@ -122,7 +125,7 @@ https://civitai.com/models/139562/realvisxl-v50
 
 1. **Navigate to the Checkpoints Directory**:
    ```bash
-   cd $HOME/shared/vison/models/checkpoints
+   cd $HOME/shared/application/comfyui/models/checkpoints
    ```
 
 2. **Download `realvisxlV50_v50LightningBakedvae.safetensors`**:
@@ -134,7 +137,7 @@ To use GGUF models or other safetensor models, follow the steps below to downloa
 
 1. **Navigate to the Checkpoints Directory**:
    ```bash
-   cd $HOME/shared/vison/models/checkpoints
+   cd $HOME/shared/application/comfyui/models/checkpoints
    ```
 
 2. **Download `flux1-schnell-fp8.safetensors`**:
