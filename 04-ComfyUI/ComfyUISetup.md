@@ -11,17 +11,72 @@ Before starting, ensure you have the following installed on your system:
 - **NVIDIA GPU with CUDA support** (if using GPU acceleration)
 - **Create Directory structure for git repo Models and Checkpoints**
 
+## Prepare the extra disk space for model storage
+
+The extra disk partition "/dev/sdb1" where earlier mounted on "/var/lib/docker" for storing all the Docker imagaes. This partition can also be used to store the ComfyUI models, that can be easially downloaded from the user's cli and then shared into ComfyUI in real time like a shared space.
+
+### 1. Adjust permissions on /var/lib/docker for all members in the Docker group
+
+Allow members of the docker group to traverse (but not list) the directory:
+
 ```bash
-mkdir -p ~/dev-ai/vison/models/checkpoints
+sudo chgrp docker /var/lib/docker
+sudo chmod 0710 /var/lib/docker
 ```
+
+### 2. Create the shared directory
+
+Create the new shared folder "exstore" and assign ownership + permissions:
+
+```bash
+sudo mkdir /var/lib/docker/exstore
+sudo chown root:docker /var/lib/docker/exstore
+sudo chmod 2770 /var/lib/docker/exstore
+```
+
+### 3. Create user symlinks
+
+Create a symlink in each docker-group user’s home directory pointing to the shared folder:
+
+```bash
+for user in $(getent group docker | awk -F: '{print $4}' | tr ',' ' '); do
+  sudo -u "$user" ln -sfn /var/lib/docker/exstore "/home/$user/shared"
+done
+```
+
+### 4. Verify
+
+Check permissions:
+
+```bash
+ls -ld /var/lib/docker /var/lib/docker/shared
+```
+
+Should show:
+
+```bash
+drwx--x--- 13 root docker 4096 Oct 12 07:37 /var/lib/docker
+drwxrws---  2 root docker 4096 Oct 12 11:04 /var/lib/docker/exstore
+```
+
+## Create ComfyUI
 
 ### 1. Clone the ComfyUI Repository
 
-First, navigate to `~/dev-ai/vison` directory and clone the ComfyUI repository to your local machine:
+Create the following folder structure:
 
 ```bash
-cd ~/dev-ai/vison
+mkdir -p $HOME/shared/vison/models/checkpoints
+mkdir -p $HOME/shared/vison/output
 ```
+
+First, navigate to `$HOME/shared/vison` directory:
+
+```bash
+cd $HOME/shared/vison
+```
+
+ Clone the ComfyUI repository to your local machine
 
 ```bash
 git clone https://github.com/comfyanonymous/ComfyUI.git
@@ -31,6 +86,13 @@ cd ComfyUI
 ### 2. Create the Dockerfile
 
 Copy the provided `Dockerfile` in the root of your ComfyUI directory. This file contains the necessary configurations for building the Docker container with GGUF support.
+If you prefer to copy the content into an inplace file instead:
+
+```bash
+nano dockerfile
+```
+
+Copy the file's content and then paste it into the text window. Then Save and Exit.
 
 ### 3. Build the Docker Image
 
@@ -46,11 +108,12 @@ Once the image is built, you can run the Docker container with volume mapping fo
 
 ```bash
 docker run --name comfyui -p 8188:8188 --gpus all \
-  -v $HOME/dev-ai/vison/models:/app/models \
+  -v $HOME/shared/vison/models:/app/models \
+  -v $HOME/shared/vison/output:/app/output \
   -d comfyui-gguf:latest
 ```
 
-This command maps your local `models` directory to `/app/models` inside the container and exposes ComfyUI on port `8188`.
+This command maps your local `models` and `output` directory to `/app/models` and `/app/output` inside the container and exposes ComfyUI on port `8188`.
 
 ### 5. Download and Place Checkpoint Models
 
@@ -59,7 +122,7 @@ https://civitai.com/models/139562/realvisxl-v50
 
 1. **Navigate to the Checkpoints Directory**:
    ```bash
-   cd $HOME/dev-ai/vison/models/checkpoints
+   cd $HOME/shared/vison/models/checkpoints
    ```
 
 2. **Download `realvisxlV50_v50LightningBakedvae.safetensors`**:
@@ -71,7 +134,7 @@ To use GGUF models or other safetensor models, follow the steps below to downloa
 
 1. **Navigate to the Checkpoints Directory**:
    ```bash
-   cd $HOME/dev-ai/vison/models/checkpoints
+   cd $HOME/shared/vison/models/checkpoints
    ```
 
 2. **Download `flux1-schnell-fp8.safetensors`**:
