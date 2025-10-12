@@ -49,7 +49,7 @@ done
 Check permissions:
 
 ```bash
-ls -ld /var/lib/docker /var/lib/docker/shared
+ls -ld /var/lib/docker /var/lib/docker/exstore
 ```
 
 Should show:
