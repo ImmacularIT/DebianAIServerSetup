@@ -61,7 +61,7 @@ drwxrws---  2 root docker 4096 Oct 12 11:04 /var/lib/docker/exstore
 
 ### 5. Keep permissions persistant
 
-Unfortunately, Docker will revert the permissions back to "root:root" on the "(/var/lib)/docker" directory everytime it starts. A fix is needed to change the directory back to the desired permissions.
+Unfortunately, Docker will revert the permissions back to "root:root" on the "(/var/lib)/docker" directory everytime it starts. A fix is needed to change the directory back to the desired permissions when this happens.
 
 Create the following servicefile:
 
