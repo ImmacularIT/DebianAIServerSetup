@@ -59,6 +59,42 @@ drwx--x--- 13 root docker 4096 Oct 12 07:37 /var/lib/docker
 drwxrws---  2 root docker 4096 Oct 12 11:04 /var/lib/docker/exstore
 ```
 
+### 5. Keep permissions persistant
+
+Unfortunately, Docker will revert the permissions back to "root:root" on the "(/var/lib)/docker" directory everytime it starts. A fix is needed to change the directory back to the desired permissions.
+
+Create the following servicefile:
+
+```bash
+sudo nano /etc/systemd/system/docker-fix-perms.service
+```bash
+
+Populate the servicefile with the following content:
+
+```bash
+[Unit]
+Description=Reapply permissions for /var/lib/docker shared directory
+After=docker.service
+Requires=docker.service
+RequiresMountsFor=/var/lib/docker
+
+[Service]
+Type=oneshot
+ExecStart=/bin/chgrp docker /var/lib/docker
+ExecStart=/bin/chmod 0710 /var/lib/docker
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Reload and enable the service:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable docker-fix-perms.service
+```
+
 Create the following directory structure:
 
 ```bash
