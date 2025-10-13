@@ -13,7 +13,7 @@ Before starting, ensure you have the following installed on your system:
 
 ## Prepare the extra disk space for model storage
 
-The extra disk partition "/dev/sdb1" where earlier mounted on "/var/lib/docker" for storing all the Docker imagaes. This partition can also be used to store the ComfyUI models, that can be easially downloaded from the user's cli and then shared into ComfyUI in real time like a shared space.
+The extra disk partition "/dev/sdb1" were earlier mounted on "/var/lib/docker" for storing all the Docker imagaes. This partition can also be used to store the ComfyUI models, that can be easially downloaded from the user's cli and then shared into ComfyUI in real time like a shared space.
 
 ### 1. Adjust permissions on /var/lib/docker for all members in the Docker group
 
