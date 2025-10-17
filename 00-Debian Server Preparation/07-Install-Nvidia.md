@@ -48,6 +48,7 @@ reboot
 
 ### Step 4: Install latest Nvidia drivers
 
+Login as root.
 Get the latest Nvidia driver at:
 
 ```bash
