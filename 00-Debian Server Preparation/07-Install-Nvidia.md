@@ -43,6 +43,7 @@ options nouveau modeset=0
 ```bash
 apt install linux-headers-$(uname -r) build-essential make nvtop htop gcc cmake -y
 apt clean
+reboot
 ```
 
 ### Step 4: Install latest Nvidia drivers
