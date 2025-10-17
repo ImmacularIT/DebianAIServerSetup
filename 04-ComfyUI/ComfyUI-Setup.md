@@ -100,6 +100,7 @@ Create the following directory structure:
 ```bash
 mkdir -p $HOME/shared/source
 mkdir -p $HOME/shared/application/comfyui/models/checkpoints
+mkdir -p $HOME/shared/application/comfyui/input
 mkdir -p $HOME/shared/application/comfyui/output
 mkdir -p $HOME/shared/application/comfyui/workflow
 ```
@@ -147,6 +148,7 @@ Once the image is built, you can run the Docker container with volume mapping fo
 ```bash
 docker run --name comfyui -p 8188:8188 --gpus all \
   -v $HOME/shared/application/comfyui/models:/app/models \
+  -v $HOME/shared/application/comfyui/input:/app/input \
   -v $HOME/shared/application/comfyui/output:/app/output \
   -v $HOME/shared/application/comfyui/workflow:/app/user \
   -d comfyui-gguf:latest
