@@ -67,7 +67,7 @@ Create the following servicefile:
 
 ```bash
 sudo nano /etc/systemd/system/docker-fix-perms.service
-```bash
+```
 
 Populate the servicefile with the following content:
 
