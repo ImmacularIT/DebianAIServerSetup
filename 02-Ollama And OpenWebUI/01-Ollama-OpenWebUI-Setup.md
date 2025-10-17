@@ -35,6 +35,7 @@ sudo apt clean
 
     ```bash
     sudo apt-get install -y nvidia-container-toolkit
+    sudo apt clean
     ```
 
 ### Step 2: Configure Docker to Use Nvidia Driver
