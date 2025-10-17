@@ -9,6 +9,13 @@ To run Ollama using an Nvidia GPU, follow these steps:
 
 #### Install with Apt
 
+Install the GnuPG:
+
+```bash
+sudo apt install gnupg
+sudo apt clean
+```
+
 1. **Configure the repository**:
 
     ```bash
