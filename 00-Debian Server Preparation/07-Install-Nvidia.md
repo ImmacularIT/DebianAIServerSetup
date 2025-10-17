@@ -73,9 +73,11 @@ chmod +x NV*
 ```
 
 Select "NVIDIA Proprietary"
-Then press "OK" on the appearing warnings till installation continues.
-At the end, choose "No" when asked for setting up X configuration.
-Then "OK".
+
+Then:
+* Press "OK" on the appearing warnings till installation continues.
+* At the end, choose "No" when asked for setting up X configuration.
+* Then press "OK".
 
 ### Step 5: Update the initramfs and reboot
 
