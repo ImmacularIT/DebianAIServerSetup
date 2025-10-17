@@ -4,17 +4,33 @@ This guide walks you through on how to setup Static IP on a Debian headless serv
 
 ---
 
+##Step 1: Find your network interface name
+
+```bash
+ip link
+```
+
+
 Login as root and enter following:
 
 ```bash
-nano /etc/default/grub
+nano /etc/network/interfaces
 ```
 
-Locate the lines beginning with GRUB_CMDLINE_LINUX_DEFAULT and GRUB_CMDLINE_LINUX. They might look something like:
+Then modify or add the following configuration - replacing the values with your actual details:
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="quiet"
-GRUB_CMDLINE_LINUX=""
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+auto ens3
+iface ens3 inet static
+    address 192.168.1.50
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    dns-nameservers 1.1.1.1 8.8.8.8
 ```
 
 Add ipv6.disable=1 inside those quotes. For example:
