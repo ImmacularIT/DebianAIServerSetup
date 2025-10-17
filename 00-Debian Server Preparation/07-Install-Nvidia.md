@@ -223,8 +223,8 @@ cd cudnn-linux-x86_64-8.9.7.29_cuda12-archive
 Then copy some library files to the Cuda directory.
 
 ```bash
-cp include/cudnn*.h /usr/local/cuda/include/
-cp lib/libcudnn* /usr/local/cuda/lib64/
+mv include/cudnn*.h /usr/local/cuda/include/.
+mv lib/libcudnn* /usr/local/cuda/lib64/.
 chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
 ```
 
