@@ -1,4 +1,4 @@
-# Running SearXNG with Custom Settings in Docker (Non Working)
+# (Non Working) Running SearXNG with Custom Settings in Docker
 
 ## Overview
 
