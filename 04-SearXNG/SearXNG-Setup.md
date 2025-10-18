@@ -24,7 +24,7 @@ docker pull docker.io/searxng/searxng:latest
 Create the path for the settings file:
 
 ```bash
-mkdir -p $HOME//shared/application/searxng
+mkdir -p $HOME/shared/application/searxng
 ```
 
 Then place the custom `settings.yml` file into newly created directory. Ensure that this file is configured according to your needs, including enabling JSON responses if required.
