@@ -75,4 +75,6 @@ This should return search results in JSON format.
 
 ### 5. Configuration URL for OpenWebUI
 
+```bash
 http://<hostname>:4000/search?q=<query>
+```
