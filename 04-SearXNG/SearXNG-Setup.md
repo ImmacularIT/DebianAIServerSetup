@@ -24,10 +24,10 @@ docker pull docker.io/searxng/searxng:latest
 Create the path for the settings file:
 
 ```bash
-x
+mkdir -p $HOME//shared/application/searxng
 ```
 
-Place your custom `settings.yml` file in the directory of your choice. Ensure that this file is configured according to your needs, including enabling JSON responses if required.
+Then place the custom `settings.yml` file into newly created directory. Ensure that this file is configured according to your needs, including enabling JSON responses if required.
 
 ### 3. Run the SearXNG Docker Container
 
@@ -53,7 +53,10 @@ docker run -d \
 #### Command Breakdown:
 - `-d`: Runs the container in detached mode.
 - `-p 4000:8080`: Maps port 8080 in the container to port 4000 on your host machine.
-- `-v ./settings.yml:/etc/searxng/settings.yml`: Mounts the custom `settings.yml` file into the container.
+- `-e BIND_ADDRESS="0.0.0.0:8080"`: Instruction to only use IPv4.
+- `-e GRANIAN_HOST="0.0.0.0"`: Instruction to only use IPv4.
+- `-e GRANIAN_PORT="8080"`: Instruction to only use IPv4.
+- `-v $HOME/shared/application/searxng/settings.yml:/etc/searxng/settings.yml`: Mounts the custom `settings.yml` file into the container.
 - `searxng/searxng:latest` or `searxng/searxng`: The Docker image being used.
 
 ### 4. Access SearXNG
