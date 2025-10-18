@@ -68,7 +68,7 @@ Once the container is running, you can access your SearXNG instance by navigatin
 To verify that the JSON output is correctly configured, you can use `curl` or a similar tool:
 
 ```bash
-curl http://<hostname>:4000/search?q=python&format=json
+curl "http://<hostname>:4000/search?q=python&format=json"
 ```
 
 This should return search results in JSON format.
