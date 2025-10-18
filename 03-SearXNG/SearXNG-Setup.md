@@ -29,14 +29,28 @@ Run the Docker container using your custom `settings.yml` file. Choose the appro
 
 #### For the Official Image:
 
+In the "TZ=", set the Time Zone into the desired local time zone.
+
 ```bash
-docker run -d -p 4000:8080 --restart always --name searxng -v ./settings.yml:/etc/searxng/settings.yml searxng/searxng:latest
+docker run -d \
+  --name searxng \
+  --restart no \
+  -p 4000:8080 \
+  -e BIND_ADDRESS="0.0.0.0:8080" \
+  -e GRANIAN_HOST="0.0.0.0" \
+  -e GRANIAN_PORT="8080" \
+  -e TZ="Etc/UTC" \
+  -v $HOME/shared/application/searxng/settings.yml:/etc/searxng/settings.yml \
+  searxng/searxng:latest
 ```
 
 #### Command Breakdown:
 - `-d`: Runs the container in detached mode.
 - `-p 4000:8080`: Maps port 8080 in the container to port 4000 on your host machine.
-- `-v ./settings.yml:/etc/searxng/settings.yml`: Mounts the custom `settings.yml` file into the container.
+- `-e BIND_ADDRESS="0.0.0.0:8080"` : Instruct to only use IPv4 address.
+- `-e GRANIAN_HOST="0.0.0.0"` : Instruct to only use IPv4 address.
+- `-e GRANIAN_PORT="8080"` : Instruct to only use IPv4 address.
+- `-v $HOME/shared/application/searxng/settings.yml:/etc/searxng/settings.yml`: Mounts the custom `settings.yml` file into the container.
 - `searxng/searxng:latest` or `searxng/searxng`: The Docker image being used.
 
 ### 4. Access SearXNG
