@@ -1,4 +1,4 @@
-# Running DeepSeek-R1-0528 (FP8 Hybrid) with KTransformers
+# (untested) Running DeepSeek-R1-0528 (FP8 Hybrid) with KTransformers
 
 This guide provides instructions to run the DeepSeek-R1-0528 model locally using a hybrid FP8 (GPU) and Q4_K_M GGUF (CPU) approach with KTransformers, managed via Docker. This setup is optimized for high-end hardware (e.g., NVIDIA RTX 4090, high-core count CPU, significant RAM).
 
