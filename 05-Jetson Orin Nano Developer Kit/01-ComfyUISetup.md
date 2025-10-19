@@ -1,4 +1,4 @@
-## Running uncensored models on the NVIDIA Jetson Orin Nano Super Developer Kit
+## (untested) Running uncensored models on the NVIDIA Jetson Orin Nano Super Developer Kit
 
 This guide is aimed at helping you set up uncensored models seamlessly on your Jetson Orin Nano, ensuring you can run powerful image generation models on this compact, yet powerful device.
 
