@@ -1,4 +1,4 @@
-# **Port Forwarding Magic: Set Up Bolt.New with Remote Ollama Server and Qwen2.5-Coder:32B**
+# **(untested) Port Forwarding Magic: Set Up Bolt.New with Remote Ollama Server and Qwen2.5-Coder:32B**
 
 This guide demonstrates how to use **port forwarding** to connect your local **Bolt.New** setup to a **remote Ollama server**, solving issues with apps that don’t allow full customization. We’ll use the open-source [Bolt.New repository](https://github.com/coleam00/bolt.new-any-llm) as our example, and we’ll even show you how to extend the context length for the popular **Qwen2.5-Coder:32B model**.
 
